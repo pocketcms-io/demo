@@ -1,7 +1,7 @@
 {
   "domains": {
-    "nuxt": "demo.pocketstore.io",
-    "pocketbase": "admin.pocketstore.io"
+    "nuxt": "demo.pocketcms.io",
+    "pocketbase": "admin.pocketcms.io"
   },
   "maintance": {
     "enabled": false,
@@ -28,22 +28,9 @@
       }
     ]
   },
-  "currency": {
-    "fallback": "€",
-    "currencies": ["€", "$"]
-  },
   "integrations": {
-    "cookiefirst": {
-      "id": "36ed47d8-6292-415a-bfce-f218a0e0d183"
-    },
     "pirsch": {
       "id": "YJOaZhm8IdEgTO9uy5lzkF583HLgfQs7"
-    }
-  },
-  "payment": {
-    "paypal": {
-      "id": "AUtZarD95T0LXYT1Dn51mBIBswWY3QDb-S380C-_xgfhqqJ6IEJHZh-wuRnRzNy184Lj5fpbXokZBiOk",
-      "currency": "EUR"
     }
   }
 }
