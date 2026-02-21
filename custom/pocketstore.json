@@ -3,20 +3,25 @@
     "nuxt": "demo.pocketstore.io",
     "pocketbase": "admin.pocketstore.io"
   },
-  "maintance": {
-    "enabled": false,
-    "until": "12.10.2026 12:12:12"
-  },
-  "extension": false,
   "emails": {
     "support": {
       "address": "support@jonathan-martz.de",
       "name": "support"
     }
   },
+  "extension": false,
+  "integrations": {
+    "pirsch": {
+      "id": "YJOaZhm8IdEgTO9uy5lzkF583HLgfQs7"
+    }
+  },
   "language": {
     "fallback": "de",
-    "languages": ["en", "de", "fr"],
+    "languages": [
+      "en",
+      "de",
+      "fr"
+    ],
     "locales": [
       {
         "code": "de",
@@ -28,9 +33,8 @@
       }
     ]
   },
-  "integrations": {
-    "pirsch": {
-      "id": "YJOaZhm8IdEgTO9uy5lzkF583HLgfQs7"
-    }
+  "maintance": {
+    "enabled": false,
+    "until": "12.10.2026 12:12:12"
   }
 }
