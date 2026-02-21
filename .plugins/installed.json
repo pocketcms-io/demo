@@ -29,6 +29,13 @@
   },
   {
     "version": "latest",
+    "name": "bug-reporting",
+    "vendor": "pocketstore-io",
+    "revision": "2bfdb427d7912e3f65c2f845ed72ae08c1020d83",
+    "source": "baseline"
+  },
+  {
+    "version": "latest",
     "name": "cookie-banner",
     "vendor": "pocketstore-io",
     "revision": "6ad857858596deee4ef62646b78ede01f11a45d2",
@@ -75,12 +82,5 @@
     "vendor": "pocketstore-io",
     "revision": "0.0.1.2",
     "source": "custom"
-  },
-  {
-    "version": "latest",
-    "name": "bug-reporting",
-    "vendor": "pocketstore-io",
-    "revision": "2bfdb427d7912e3f65c2f845ed72ae08c1020d83",
-    "source": "storefront"
   }
 ]
