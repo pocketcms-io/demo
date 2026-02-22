@@ -51,8 +51,8 @@
   {
     "version": "latest",
     "name": "disclaimer-demo",
-    "vendor": "pocketstore-io",
-    "revision": "94226143799c15f2e6c4a61b3d8e79e61c149f40",
+    "vendor": "pocketcms-io",
+    "revision": "c8eedaabe2c177e95d399f2ec4364bc07ba3eb44",
     "source": "custom"
   },
   {
@@ -66,7 +66,7 @@
     "version": "latest",
     "name": "homepage-demo",
     "vendor": "pocketcms-io",
-    "revision": "7d68e6e094a021b890d92a2ce62a4932c185c05f",
+    "revision": "c0fa27f7a735ba196faaacf7e1c1e1f17d22e72d",
     "source": "custom"
   },
   {
