@@ -1,6 +1,6 @@
 <template>
   <section class="header w-full bg-secondary text-white mb-3 px-3 py-3">
-    <div class="flex w-full justify-between">
+    <div class="flex w-full justify-between mx-auto max-w-6xl">
       <h1 class="text-xl">
         <a href="/" class="font-bold">PocketCms.io</a>
       </h1>
