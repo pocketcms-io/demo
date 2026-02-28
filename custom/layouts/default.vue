@@ -49,14 +49,45 @@ import Header from "~/components/Header.vue";
 import BugReporting from "~/components/BugReporting.vue";
 import IssueReporting from "~/components/IssueReporting.vue";
 import BackToTop from "~/components/BackToTop.vue";
+import CookieBanner from "~/components/CookieBanner.vue";
+import Breadcrumb from "~/components/Breadcrumb.vue";
+import Messages from "~/components/Messages.vue";
 </script>
 
 <style scoped>
 .page {
-  background-color: #e66464;
-  background-image: linear-gradient(to right, transparent 50%, rgba(255, 255, 255, 0.5) 50%),
-  linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.5) 50%);
-  background-size: 20px 20px;
+  background: radial-gradient(
+      circle at top,
+      transparent 9%,
+      #1EADEF 10%,
+      #1EADEF 15%,
+      transparent 16%
+  ),
+  radial-gradient(
+      circle at bottom,
+      transparent 19%,
+      #1EADEF 20%,
+      #1EADEF 25%,
+      transparent 26%
+  ),
+  radial-gradient(
+      circle at right,
+      transparent 19%,
+      #1EADEF 20%,
+      #1EADEF 25%,
+      transparent 26%
+  ),
+  radial-gradient(
+      circle at left,
+      transparent 9%,
+      #1EADEF 10%,
+      #1EADEF 15%,
+      transparent 16%
+  );
+  background-size: 3em 3em;
+  background-color: #ccc;
+  opacity: 1;
 }
 </style>
+
 
