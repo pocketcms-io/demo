@@ -1,0 +1,71 @@
+name: Deploy via SSH (no external actions)
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH client
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends openssh-client ca-certificates
+          rm -rf /var/lib/apt/lists/*
+
+      - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+        run: |
+          set -euo pipefail
+          : "${SSH_PORT:=22}"
+
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          ssh-keyscan -p "$SSH_PORT" "$SSH_HOST" >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Run deploy commands on server
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_FOLDER: ${{ secrets.SSH_FOLDER }}
+        run: |
+          set -euo pipefail
+          : "${SSH_PORT:=22}"
+
+          ssh -p "$SSH_PORT" -o BatchMode=yes -o StrictHostKeyChecking=yes \
+            "$SSH_USER@$SSH_HOST" \
+            "SSH_FOLDER='$SSH_FOLDER' bash -lc 'set -euo pipefail
+              export NVM_DIR=\$HOME/.nvm
+              source \$HOME/.nvm/nvm.sh
+
+              cd /var/www/\$SSH_FOLDER
+              git reset --hard
+              git checkout main
+              git pull
+          
+              rm -rf .plugins storefront
+
+              go run bin/plugins.go
+              go run bin/custom.go
+              go run bin/translations.go
+
+              cd storefront
+              bun install --force
+          
+              bun run build
+              cd ..
+
+              docker compose stop
+              docker compose up -d
+            '"

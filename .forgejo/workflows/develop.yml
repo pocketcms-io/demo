@@ -1,0 +1,34 @@
+name: Deployment-develop
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy_develop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH and Run Commands
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }} 
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            cd /var/www/develop
+            git pull
+            git checkout develop
+            go run bin/extend.go
+            go run bin/translations.go
+            cd storefront
+            npm i
+            bun run vitest
+            bun run lint
+            npm run build
+            cd ..
+            docker compose stop
+            docker compose -f docker-compose.develop.yml up -d
